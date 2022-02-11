@@ -84,7 +84,7 @@ class EditClientButton extends React.Component {
               <div className="modal-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="mb-3">
-                    <label htmlFor={ "exampleInputAge1" + + this.props.index.toString()} className="form-label">
+                    <label htmlFor={ "exampleInputAge1" + this.props.index.toString()} className="form-label">
                       Age
                     </label>
                     <input
@@ -95,7 +95,7 @@ class EditClientButton extends React.Component {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor={ "exampleInputName1" + + this.props.index.toString()} className="form-label">
+                    <label htmlFor={ "exampleInputName1" + this.props.index.toString()} className="form-label">
                       Name
                     </label>
                     <input
