@@ -7,27 +7,37 @@ import NavBar from "./NavBar";
 
 class App extends React.Component {
   state = {
-    clients: [],
+    clients: [{
+      id: 22,
+      age: 10,
+      name: 'ollie',
+      email: "ollie@mail.com",
+    },{
+      id: 23,
+      age: 20,
+      name: 'ruslan',
+      email: "ollie@mail.com",
+    }],
   };
 
-  componentDidMount() {
-    ReactApi.getAllClients().then((response) => {
-      this.setState({
-        clients: response.data,
-      });
-    });
-  }
+  // componentDidMount() {
+  //   ReactApi.getAllClients().then((response) => {
+  //     this.setState({
+  //       clients: response.data,
+  //     });
+  //   });
+  // }
 
-  componentDidUpdate() {
-    ReactApi.getAllClients().then((response) => {
-      this.setState({
-        clients: response.data,
-      });
-    });
-  }
+  // componentDidUpdate() {
+  //   ReactApi.getAllClients().then((response) => {
+  //     this.setState({
+  //       clients: response.data,
+  //     });
+  //   });
+  // }
 
   render() {
-    const displayClients = this.state.clients.map((client) => {
+    const displayClients = this.state.clients.map((client, index) => {
       return (
         <tr key={client.id}>
           <td>{client.id}</td>
@@ -36,7 +46,7 @@ class App extends React.Component {
           <td>{client.email}</td>
           <td>
             <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-              <EditClientButton clientId={client.id} />
+              <EditClientButton index={index} {...client} />
               <DeleteClientButton clientId={client.id} />
             </div>
           </td>

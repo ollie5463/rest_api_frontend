@@ -9,15 +9,15 @@ class EditClientButton extends React.Component {
   };
 
   handleClickEdit = async () => {
-    let id = this.props.clientId;
-    const response = await ReactApi.getClientById(id);
-    this.setState(response.data);
+    // let id = this.props.clientId;
+    // const response = await ReactApi.getClientById(id);
+    // this.setState(response.data);
   };
 
   handleChangeAge = (event) => {
     const value = event.target.value;
     this.setState({
-      age: value,
+      age: value
     });
   };
 
@@ -36,8 +36,16 @@ class EditClientButton extends React.Component {
   };
 
   handleSubmit = () => {
-    ReactApi.updateClient(this.props.clientId, this.state);
+    ReactApi.updateClient(this.props.id, this.state);
   };
+
+  componentDidMount() {
+    this.setState({
+        name: this.props.name,
+        age: this.props.age,
+        email: this.props.email
+    })
+  }
 
   render() {
     return (
@@ -47,22 +55,22 @@ class EditClientButton extends React.Component {
           type="button"
           className="btn btn-primary btn-sm"
           data-bs-toggle="modal"
-          data-bs-target="#edit"
+          data-bs-target={ "#edit" + this.props.index.toString()}
         >
           Edit
         </button>
 
         <div
           className="modal fade"
-          id="edit"
+          id={ "edit" +  this.props.index.toString()}
           tabIndex="-1"
-          aria-labelledby="exampleModalEdit"
+          aria-labelledby={ "exampleModalEdit" + this.props.index.toString()}
           aria-hidden="true"
         >
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
-                <h5 className="modal-title" id="exampleModalEdit">
+                <h5 className="modal-title" id={ "exampleModalEdit" + this.props.index.toString() }>
                   Edit client
                 </h5>
 
@@ -76,7 +84,7 @@ class EditClientButton extends React.Component {
               <div className="modal-body">
                 <form onSubmit={this.handleSubmit}>
                   <div className="mb-3">
-                    <label htmlFor="exampleInputAge1" className="form-label">
+                    <label htmlFor={ "exampleInputAge1" + + this.props.index.toString()} className="form-label">
                       Age
                     </label>
                     <input
@@ -87,7 +95,7 @@ class EditClientButton extends React.Component {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="exampleInputName1" className="form-label">
+                    <label htmlFor={ "exampleInputName1" + + this.props.index.toString()} className="form-label">
                       Name
                     </label>
                     <input
@@ -98,7 +106,7 @@ class EditClientButton extends React.Component {
                     />
                   </div>
                   <div className="mb-3">
-                    <label htmlFor="exampleInputEmail1" className="form-label">
+                    <label htmlFor={ "exampleInputEmail1" + + this.props.index.toString()} className="form-label">
                       Email
                     </label>
                     <input
