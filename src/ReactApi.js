@@ -27,5 +27,5 @@ export const getClientById = (id) => {
 export const updateClient = (id, client) => {
   const path = `api/v1/clients/${id}`;
 
-  return axios.put(path, id, client);
+  return axios.put(path, client);
 };

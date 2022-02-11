@@ -38,7 +38,7 @@ class CreateClientButton extends React.Component {
       <div>
         <button
           type="button"
-          className="btn btn-primary"
+          className="btn btn-primary btn-sm"
           data-bs-toggle="modal"
           data-bs-target="#create"
         >

@@ -36,7 +36,7 @@ class EditClientButton extends React.Component {
   };
 
   handleSubmit = () => {
-    ReactApi.updateClient();
+    ReactApi.updateClient(this.props.clientId, this.state);
   };
 
   render() {
@@ -108,7 +108,11 @@ class EditClientButton extends React.Component {
                       onChange={this.handleChangeEmail}
                     />
                   </div>
-                  <button type="submit" className="btn btn-primary">
+                  <button
+                    type="submit"
+                    onSubmit={this.handleSubmit}
+                    className="btn btn-primary"
+                  >
                     Update
                   </button>
                 </form>

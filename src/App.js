@@ -2,6 +2,8 @@ import React from "react";
 import * as ReactApi from "./ReactApi";
 import CreateClientButton from "./CreateClientButton";
 import EditClientButton from "./EditClientButton";
+import DeleteClientButton from "./DeleteClientButton";
+import NavBar from "./NavBar";
 
 class App extends React.Component {
   state = {
@@ -24,10 +26,6 @@ class App extends React.Component {
     });
   }
 
-  deleteClient = (id) => {
-    ReactApi.deleteClient(id);
-  };
-
   render() {
     const displayClients = this.state.clients.map((client) => {
       return (
@@ -37,23 +35,18 @@ class App extends React.Component {
           <td>{client.name}</td>
           <td>{client.email}</td>
           <td>
-            <EditClientButton clientId={client.id} />
-            <button
-              className="btn btn-danger btn-sm"
-              onClick={() => {
-                this.deleteClient(client.id);
-              }}
-            >
-              Delete
-            </button>
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+              <EditClientButton clientId={client.id} />
+              <DeleteClientButton clientId={client.id} />
+            </div>
           </td>
         </tr>
       );
     });
 
     return (
-      <div>
-        <h1 style={{ textAlign: "center" }}>client table</h1>
+      <div className="container">
+        <NavBar />
         <table className="table table-striped">
           <thead>
             <tr>
